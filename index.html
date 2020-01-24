@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        /*.row > .col, .row > [class^="col-"] {
+                padding-top: .75rem;
+                padding-bottom: .75rem;
+                background-color: rgba(86, 61, 124, .15);
+                border: 1px solid rgba(86, 61, 124, .2);
+            
+            }*/
+        .border-10 {
+            border-left-width: 10px !important;
+        }
+
+        .table-sm td {
+            padding: 0 .3rem !important;
+        }
+    </style>
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card shadow my-2 h-100">
+                    <div class="card-body border-primary border-left border-10 rounded-left">
+                        <h5 class="card-title ">Modelle</h5>
+                        <p class="card-text">7 Modelle in db</p>
+                        <p class="card-text text-success">+ 83 models from last month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow my-2 h-100">
+                    <div class="card-body border-success border-left border-10 rounded-left">
+                        <h5 class="card-title ">Größe</h5>
+                        <p class="card-text">7 GiB</p>
+                        <p class="card-text text-success">+ 7 % from last month</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow my-2 h-100">
+                    <div class="card-body border-info border-left border-10 rounded-left">
+                        <h5 class="card-title ">Model Status</h5>
+                        <table class="table-sm">
+                            <tbody>
+                                <tr>
+                                    <td class="text-secondary">Experimental</td>
+                                    <td>343</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-success">Operation</td>
+                                    <td>29</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-warning">Maintenance</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-danger">Stale</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary">Archived</td>
+                                    <td>1244</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow my-2 h-100">
+                    <div class="card-body border-secondary border-left border-10 rounded-left">
+                        <h5 class="card-title ">Models per Application</h5>
+                        <table class="table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>Rattle/MPPL</td>
+                                    <td>85</td>
+                                </tr>
+                                <tr>
+                                    <td>KNIME</td>
+                                    <td>41</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row my-2">
+
+            <div class="col-4" style="min-width: 200px;">
+                <div class="card shadow my-2" style="max-width: 400px">
+                    <canvas class="card-image" id="modelFileTypes" width="200" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-8" style="min-width: 200px;">
+                <div class="card shadow my-2" style="max-width: 800px">
+                    <canvas class="card-image" id="modelTypes" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Chart.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
+        integrity="sha384-QzN1ywg2QLsf72ZkgRHgjkB/cfI4Dqjg6RJYQUqH6Wm8qp/MvmEYn+2NBsLnhLkr"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <script>
+        new Chart(document.getElementById("modelFileTypes"), {
+            "type": "doughnut",
+            "data": {
+                "labels": ["PMML", "Tensorflow", "Scikit-Learn", "R-Model"],
+                "datasets": [{
+                    "label": "My First Dataset",
+                    "data": [200, 100, 50, 20],
+                    "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)", "rgb(99, 205, 86)"]
+                }]
+            },
+            "options": {
+                "title": {
+                    "display": true,
+                    "text": 'Model File Types'
+                },
+            }
+        });
+        new Chart(document.getElementById("modelTypes"), {
+            "type": "horizontalBar",
+            "data": {
+                "labels": ["Classification", "Regression", "Clustering", "Neural Network"],
+                "datasets": [{
+                    "label": "My First Dataset",
+                    "data": [48, 47, 27, 28],
+                    "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)", "rgb(99, 205, 86)"]
+                }]
+            },
+            "options": {
+                "scales": {
+                    "xAxes": [{
+                        "ticks": {
+                            "beginAtZero": true
+                        }
+                    }]
+                },
+                "title": {
+                    "display": true,
+                    "text": 'Model Types'
+                },
+                "legend": {
+                    "display": false
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
