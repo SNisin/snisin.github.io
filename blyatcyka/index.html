@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <style type="text/css">
+        html,
+        body {
+            background-color: #000;
+            text-align: center;
+            margin-top: 25px;
+            display: block;
+        }
+
+        @keyframes embiggen {
+            0% {
+                transform: scale(1.0);
+            }
+
+            100% {
+                transform: scale(2.0);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .spin {
+            animation-name: spin;
+            animation-duration: 1100ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .jitter {
+            animation: jitter 0.46153846153s infinite;
+        }
+
+        .scale {
+            animation: embiggen 0.46153846153s infinite;
+        }
+
+        @keyframes jitter {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0.0;
+            }
+        }
+
+        @-webkit-keyframes blink {
+            50% {
+                opacity: 0.0;
+            }
+        }
+
+        .blink {
+            animation: blink 0.92307692307s step-start 0s infinite;
+            -webkit-animation: blink 0.92307692307s step-start 0s infinite;
+        }
+
+        .aligntop>img {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body style="text-align:center">
+    <audio id="music" autoplay loop>
+        <source src="files/Garbage Bandits Radio 1.ogg" type="audio/ogg">
+        <source src="files/Garbage Bandits Radio 1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="absolute blink" style="font-size:111px;color:#FFa;z-index:99">BLYAT CYKA</div>
+
+    <div class="absolute scale" style="font-size:39px;color:#F11;z-index:99;right:300px">CHEEKI BREEKI</div>
+
+    <div id="vodka" class="absolute jitter" style="font-size: 22px; z-index: 999; top: 500px; left: 555px; color: red;">
+        VODKA</div>
+    <video muted autoplay loop id="mainvideo" src="files/main.mp4" style="width:800px"></video>
+
+    <img src="files/ohno.gif" style="width:195px;left:124px;top:111px" class="absolute">
+
+    <br><br>
+    <div class="aligntop">
+        <img src="files/ohno.gif" style="width:150px">
+        <img src="files/whoww.jpg" class="jitter">
+        <img src="files/ohno.gif" style="width:150px">
+    </div>
+
+    <img class="absolute jitter" style="top:377px;left:55px" src="files/dance.gif">
+
+    <img src="files/svedka.gif" class="spin absolute" style="top:234px;right:131px">
+    <img src="files/svedka.gif" class="spin absolute" style="top:238px;left:111px;width:135px">
+    <img src="files/svedka.gif" class="spin absolute" style="top:88px;right:131px;width:335px">
+
+
+    <script type="text/javascript">
+        var vodka = document.getElementById('vodka');
+        var index = 1;
+
+        var colors = [
+            "white", "red", "blue", "cyan", "yellow", "green"
+        ];
+
+        setInterval(function () {
+            vodka.style.color = colors[index];
+            index = ++index % colors.length;
+        }, 144);
+
+        function start() {
+            document.getElementById("music").play();
+            document.getElementById("mainvideo").play();
+        }
+        document.addEventListener("mousedown", start);
+        document.addEventListener("click", start);
+        document.addEventListener("touchstart", start);
+    </script>
+
+    <p style="font-size:44px;color:#FFa;z-index:99">
+        To become a true slav,
+        <a href="https://amzn.to/2LlauX8" class="absolute blink">Click Here</a>
+    </p>
+
+
+
+
+</body>
+
+</html>
