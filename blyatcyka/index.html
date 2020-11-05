@@ -119,6 +119,18 @@
             display: inline-block;
             vertical-align: middle;
         }
+
+        button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 44px;
+        }
     </style>
 </head>
 
@@ -153,6 +165,21 @@
     <img src="files/svedka.gif" class="spin absolute" style="top:88px;right:131px;width:335px">
 
 
+
+
+    <p style="font-size:44px;color:#FFa;z-index:99">
+        To become a true slav,
+        <a href="https://amzn.to/2LlauX8" class="absolute blink">Click Here</a>
+    </p>
+
+
+    <div id="overlay"
+        style="z-index:9999; position: fixed; top:0; left:0; right: 0; bottom: 0; background-color: black; display:flex; justify-content:center; align-items:center;font-size:44px;color:#000000;">
+        <button>Click</button>
+    </div>
+
+
+
     <script type="text/javascript">
         var vodka = document.getElementById('vodka');
         var index = 1;
@@ -169,20 +196,20 @@
         function start() {
             document.getElementById("music").play();
             document.getElementById("mainvideo").play();
+            if (!document.getElementById("music").paused) {
+                document.getElementById("overlay").style.display = "none";
+            } else {
+                document.getElementById("overlay").style.display = "flex";
+                setTimeout(start, 500);
+            }
         }
         document.addEventListener("mousedown", start);
         document.addEventListener("click", start);
         document.addEventListener("touchstart", start);
+        setTimeout(start, 0);
+
+
     </script>
-
-    <p style="font-size:44px;color:#FFa;z-index:99">
-        To become a true slav,
-        <a href="https://amzn.to/2LlauX8" class="absolute blink">Click Here</a>
-    </p>
-
-
-
-
 </body>
 
 </html>
